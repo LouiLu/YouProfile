@@ -9,16 +9,16 @@ module.exports = function validateEducationInput(data) {
   data.fieldofstudy = !isEmpty(data.fieldofstudy) ? data.fieldofstudy : "";
   data.from = !isEmpty(data.from) ? data.from : "";
 
-  if (Validator.isEmail(data.school)) {
+  if (Validator.isEmpty(data.school)) {
     errors.school = "School field is invalid!";
   }
-  if (Validator.isEmail(data.degree)) {
+  if (Validator.isEmpty(data.degree)) {
     errors.degree = "Degree field is invalid!";
   }
-  if (Validator.isEmail(data.fieldofstudy)) {
+  if (Validator.isEmpty(data.fieldofstudy)) {
     errors.fieldofstudy = "Field of study is invalid!";
   }
-  if (Validator.isEmail(data.from)) {
+  if (Validator.isEmpty(data.from)) {
     errors.from = "From data field is invalid!";
   }
 
