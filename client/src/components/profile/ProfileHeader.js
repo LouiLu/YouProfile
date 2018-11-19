@@ -38,9 +38,7 @@ class ProfileHeader extends Component {
                       </a>
                     )}
 
-                    {renderSocialLinks(profile.social)}
-                    
-
+                    {isEmpty(profile.social) ? null : renderSocialLinks(profile.social)}
                     
                   </p>
                 </div>
