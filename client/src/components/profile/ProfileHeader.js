@@ -4,6 +4,7 @@ import isEmpty from '../../validation/is-empty';
 class ProfileHeader extends Component {
   render() {
     const { profile } = this.props;
+    console.log(profile);
 
     const renderSocialLinks = socObj => {
       return Object.keys(socObj).map(key => {

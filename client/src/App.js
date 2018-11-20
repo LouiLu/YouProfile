@@ -60,28 +60,20 @@ class App extends Component {
       <Router>
         <div className="App">
           <Navbar />
-            <Route exact path="/" component={Landing} />
-            <div className="container">
-              <Route exact path="/login" component={Login}/>
-              <Route exact path="/register" component={Register}/>
-              <Route exact path="/profiles" component={Profiles}/>
-              <Route exact path="/profile/:handle" component={Profile}/>
+            <div className="container-fluid p-0">
               <Switch>
+                <Route exact path="/" component={Landing} />
+                <Route exact path="/login" component={Login}/>
+                <Route exact path="/register" component={Register}/>
+                <Route exact path="/profiles" component={Profiles}/>
+                <Route exact path="/profile/:handle" component={Profile}/>
                 <PrivateRoute exact path="/dashboard" component={Dashboard}/>
-              </Switch>
-              <Switch>
                 <PrivateRoute exact path="/create-profile" component={CreateProfile}/>
-              </Switch>
-              <Switch>
                 <PrivateRoute exact path="/edit-profile" component={EditProfile}/>
-              </Switch>
-              <Switch>
                 <PrivateRoute exact path="/add-experience" component={AddExperience}/>
-              </Switch>
-              <Switch>
                 <PrivateRoute exact path="/add-education" component={AddEducation}/>
+                <Route component={NotFound}/>
               </Switch>
-              <Route exact path="/not-found" component={NotFound}/>
             </div>
           <Footer />
         </div>

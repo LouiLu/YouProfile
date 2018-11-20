@@ -5,7 +5,8 @@ import {
          CLEAR_CURRENT_PROFILE, 
          GET_ERRORS, 
          SET_CURRENT_USER, 
-         GET_PROFILES
+         GET_PROFILES,
+         GET_PUBLIC_PROFILE
       } from './types';
 
 // get all user profiles
@@ -55,12 +56,12 @@ export const getProfileByHandle = (handle) => dispatch => {
    axios.get(`/api/profile/handle/${handle}`)
       .then(res =>
          dispatch({
-            type: GET_PROFILE,
+            type: GET_PUBLIC_PROFILE,
             payload: res.data
          })
       )
       .catch(err => dispatch({
-            type: GET_PROFILE,
+            type: GET_PUBLIC_PROFILE,
             payload: null
          })
       );

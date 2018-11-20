@@ -17,17 +17,21 @@ class Profile extends Component {
       }
    }
 
-   componentWillReceiveProps(nextProps) {
-      if (nextProps.profile.profile === null && this.props.profile.loading) {
-         this.props.history.push('/not-found');
-      }
-   }
+   // componentWillReceiveProps(nextProps) {
+   //    if (nextProps.profile.profile === null && this.props.profile.loading) {
+   //       this.props.history.push('/not-found');
+   //    } else if (nextProps.profile.profile === null && !this.props.profile.loading) {
+   //       // console.log(this.props.location);
+   //       // this.props.history.push(this.props.location.pathname);
+   //       // this.props.getProfileByHandle(this.props.match.params.handle);
+   //    }
+   // }
 
   render() {
-     const { profile, loading } = this.props.profile;
+     const { publicProfile, loading } = this.props.profile;
      let profileContent;
 
-     if (profile === null || loading) {
+     if (publicProfile === null || loading) {
         profileContent = <Spinner />;
      } else {
         profileContent = (
@@ -39,10 +43,10 @@ class Profile extends Component {
                   </Link>
                </div>
               </div>
-              <ProfileHeader profile={profile}></ProfileHeader>
-              <ProfileAbout profile={profile}></ProfileAbout>
-              <ProfileCreds education={profile.education} experience={profile.experience}></ProfileCreds>
-              {profile.githubusername ? (<ProfileGithub username={profile.githubusername}/>) : null}
+              <ProfileHeader profile={publicProfile}></ProfileHeader>
+              <ProfileAbout profile={publicProfile}></ProfileAbout>
+              <ProfileCreds education={publicProfile.education} experience={publicProfile.experience}></ProfileCreds>
+              {publicProfile.githubusername ? (<ProfileGithub username={publicProfile.githubusername}/>) : null}
            </div>
         )
      }
@@ -67,7 +71,8 @@ Profile.propTypes = {
 }
 
 const mapStateToProps = (state) => ({
-   profile: state.profile
+   profile: state.profile,
+   auth: state.auth
 });
 
 export default connect(mapStateToProps, {getProfileByHandle})(Profile);
